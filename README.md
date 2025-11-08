@@ -24,7 +24,7 @@ This project fetches two parts of code via POST and GET requests from `https://t
 
 ```bash
 git clone <repository-url>
-cd clinic
+cd interview
 ```
 
 ### 2. Create a Virtual Environment
@@ -136,6 +136,31 @@ Retrieve the concatenated code and final result.
 }
 ```
 
+---
+
+### Final result
+
+Here you can see Final Result and Payload.
+
+**Respons Final Result:**
+
+```json
+{
+  "part1": "3b6050ea-a3d4-4fc8",
+  "part2": "-86f4-bec75ca0b0c5",
+  "part1 + part2": "3b6050ea-a3d4-4fc8-86f4-bec75ca0b0c5",
+  "result": [
+    "{\"msg\":\"Salom\"}"
+  ]
+}
+```
+
+**Payload:**
+```json
+{
+  "msg": "Salom",
+  "url": "https://416e62d7e453.ngrok-free.app/api/v1/api/get_second_part/"
+}
 ---
 
 ## 📁 Project Structure
