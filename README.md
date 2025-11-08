@@ -18,82 +18,54 @@ This project fetches two parts of code via POST and GET requests from `https://t
 
 ---
 
-## 🚀 Local Setup (Development)
+## 🚀 Installation and Setup
 
 ### 1. Clone the Repository
 
-\`\`\`bash
-git clone <repository_url>
-cd <repository_folder>
-\`\`\`
+```bash
+git clone <repository-url>
+cd clinic
+```
 
 ### 2. Create a Virtual Environment
 
-\`\`\`bash
-python -m venv venv
-\`\`\`
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# or
+.venv\Scripts\activate  # Windows
+```
 
-### 3. Activate the Virtual Environment
+### 3. Install Dependencies
 
-**Linux/Mac:**
-\`\`\`bash
-source venv/bin/activate
-\`\`\`
-
-**Windows:**
-\`\`\`bash
-venv\Scripts\activate
-\`\`\`
-
-### 4. Install Dependencies
-
-\`\`\`bash
-pip install --upgrade pip
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
-### 5. Configure Environment Variables
+### 4. Database Setup
 
-**Linux/Mac:**
-\`\`\`bash
-cp .env.example .env
-\`\`\`
-
-**Windows:**
-\`\`\`bash
-copy .env.example .env
-\`\`\`
-
-Edit `.env` to set:
-- `SECRET_KEY`
-- `DEBUG`
-- `ALLOWED_HOSTS`
-- Database credentials
-
-### 6. Run Migrations
-
-\`\`\`bash
+```bash
 python manage.py makemigrations
 python manage.py migrate
-\`\`\`
+```
 
-### 7. Create Superuser (Optional)
+### 5. Create Superuser
 
-\`\`\`bash
+```bash
 python manage.py createsuperuser
-\`\`\`
+```
 
-### 8. Collect Static Files
+### 6. Collect Static Files
 
-\`\`\`bash
+```bash
 python manage.py collectstatic --no-input
-\`\`\`
+```
 
-### 9. Start the Development Server
+### 7. Run Development Server
 
-\`\`\`bash
+```bash
 python manage.py runserver
-\`\`\`
+```
 
 Default URL: `http://127.0.0.1:8000`
 
@@ -103,9 +75,9 @@ Default URL: `http://127.0.0.1:8000`
 
 ### Build and Run Containers
 
-\`\`\`bash
+```bash
 docker compose up -d
-\`\`\`
+```
 
 This will:
 - Start the Django application
@@ -114,9 +86,9 @@ This will:
 
 ### Stop Containers
 
-\`\`\`bash
+```bash
 docker compose down
-\`\`\`
+```
 
 ---
 
@@ -136,20 +108,24 @@ docker compose down
 ## 📡 API Endpoints
 
 ### POST `/api/v1/api/get_second_part/`
-Receive the second part of the code.
+
+Retrieve the second part of the code.
 
 **Request Example:**
-\`\`\`json
+
+```json
 {
   "part2": ""
 }
-\`\`\`
+```
 
 ### GET `/api/v1/api/get_final_answer/`
+
 Retrieve the concatenated code and final result.
 
 **Response Example:**
-\`\`\`json
+
+```json
 {
   "part1": "3b6050ea-a3d4-4fc8",
   "part2": "-86f4-bec75ca0b0c5",
@@ -162,13 +138,13 @@ Retrieve the concatenated code and final result.
     }
   ]
 }
-\`\`\`
+```
 
 ---
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 .
 ├── api/                 # App with API logic
 ├── config/              # Django settings
@@ -178,7 +154,29 @@ Retrieve the concatenated code and final result.
 ├── Makefile             # Build automation
 ├── requirements.txt     # Python dependencies
 └── README.md            # This file
-\`\`\`
+```
+
+---
+
+## 🔐 Environment Variables Setup
+
+Create a `.env` file based on `.env.example`:
+
+**Linux/Mac:**
+```bash
+cp .env.example .env
+```
+
+**Windows:**
+```bash
+copy .env.example .env
+```
+
+Configure the following variables:
+- `SECRET_KEY` - Django secret key
+- `DEBUG` - Debug mode (True/False)
+- `ALLOWED_HOSTS` - Allowed hosts
+- Database credentials
 
 ---
 
