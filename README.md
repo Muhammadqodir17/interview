@@ -1,164 +1,191 @@
-Interview API Project
+# Interview API Project
 
-This project demonstrates interaction with the test API at https://test.icorp.uz/interview.php
-.
-The goal is to fetch two parts of a code via POST and GET requests, combine them, and retrieve the final message.
+A Django REST Framework project that demonstrates interaction with an external test API to fetch, combine, and process code fragments.
 
-Prerequisites
+## 📋 Overview
 
-Python 3.13
+This project fetches two parts of code via POST and GET requests from `https://test.icorp.uz/interview.php`, combines them, and retrieves the final message.
 
-Django 5.2
+---
 
-Django REST Framework
+## ✅ Prerequisites
 
-Docker + Docker Compose (optional)
+- Python 3.13
+- Django 5.2
+- Django REST Framework
+- Docker + Docker Compose (optional)
+- `requests` library (for external HTTP requests)
 
-requests library (for external HTTP requests)
+---
 
-Local Setup (Development)
+## 🚀 Local Setup (Development)
 
-Clone the repository
+### 1. Clone the Repository
 
+\`\`\`bash
 git clone <repository_url>
 cd <repository_folder>
+\`\`\`
 
+### 2. Create a Virtual Environment
 
-Create a virtual environment
-
+\`\`\`bash
 python -m venv venv
+\`\`\`
 
+### 3. Activate the Virtual Environment
 
-Activate the virtual environment
-
-Linux/Mac
-
+**Linux/Mac:**
+\`\`\`bash
 source venv/bin/activate
+\`\`\`
 
-
-Windows
-
+**Windows:**
+\`\`\`bash
 venv\Scripts\activate
+\`\`\`
 
+### 4. Install Dependencies
 
-Install dependencies
-
+\`\`\`bash
 pip install --upgrade pip
 pip install -r requirements.txt
+\`\`\`
 
+### 5. Configure Environment Variables
 
-Create .env file
-
-# Linux/Mac
+**Linux/Mac:**
+\`\`\`bash
 cp .env.example .env
+\`\`\`
 
-# Windows
+**Windows:**
+\`\`\`bash
 copy .env.example .env
+\`\`\`
 
+Edit `.env` to set:
+- `SECRET_KEY`
+- `DEBUG`
+- `ALLOWED_HOSTS`
+- Database credentials
 
-Edit .env to configure:
+### 6. Run Migrations
 
-SECRET_KEY
-
-DEBUG
-
-ALLOWED_HOSTS
-
-Database credentials
-
-Apply migrations
-
+\`\`\`bash
 python manage.py makemigrations
 python manage.py migrate
+\`\`\`
 
+### 7. Create Superuser (Optional)
 
-Create superuser (optional, for admin access)
-
+\`\`\`bash
 python manage.py createsuperuser
+\`\`\`
 
+### 8. Collect Static Files
 
-Collect static files
-
+\`\`\`bash
 python manage.py collectstatic --no-input
+\`\`\`
 
+### 9. Start the Development Server
 
-Run the server locally
-
+\`\`\`bash
 python manage.py runserver
+\`\`\`
 
+Default URL: `http://127.0.0.1:8000`
 
-Default URL: http://127.0.0.1:8000
+---
 
-Using Docker (Local / Production)
+## 🐳 Using Docker
 
-Build and run containers
+### Build and Run Containers
 
+\`\`\`bash
 docker compose up -d
-
+\`\`\`
 
 This will:
+- Start the Django application
+- Start PostgreSQL container
+- Run migrations and collect static files (via `entrypoint.sh` / `Makefile`)
 
-Start Django app
+### Stop Containers
 
-Start PostgreSQL container
-
-Run migrations and collect static files (via entrypoint.sh / Makefile)
-
-Stop containers
-
+\`\`\`bash
 docker compose down
+\`\`\`
 
-Optional Makefile Commands
-make install        # Install dependencies
-make migrate        # Run migrations
-make collectstatic  # Collect static files
-make run            # Migrate + collectstatic + run server
-make up             # docker compose up -d
-make down           # docker compose down
+---
 
-API Endpoints
+## 🛠️ Makefile Commands
 
-POST /api/v1/api/get_second_part/ — Receive the second part of the code.
+| Command | Description |
+|---------|-------------|
+| `make install` | Install dependencies |
+| `make migrate` | Run migrations |
+| `make collectstatic` | Collect static files |
+| `make run` | Migrate + collectstatic + run server |
+| `make up` | Docker compose up |
+| `make down` | Docker compose down |
 
-GET /api/v1/api/get_final_answer/ — Retrieve the concatenated code and final result.
+---
 
-Example Usage
+## 📡 API Endpoints
 
-Send a POST request to get_second_part/ with JSON:
+### POST `/api/v1/api/get_second_part/`
+Receive the second part of the code.
 
+**Request Example:**
+\`\`\`json
 {
   "part2": ""
 }
+\`\`\`
 
+### GET `/api/v1/api/get_final_answer/`
+Retrieve the concatenated code and final result.
 
-Send a GET request to get_final_answer/ to receive:
-
-{
-  "part1": "",
-  "part2": "",
-  "part1 + part2": "",
-  "result": ""
-}
-
-
-Sample Result:
-
+**Response Example:**
+\`\`\`json
 {
   "part1": "3b6050ea-a3d4-4fc8",
   "part2": "-86f4-bec75ca0b0c5",
   "part1 + part2": "3b6050ea-a3d4-4fc8-86f4-bec75ca0b0c5",
   "result": [
-    {"msg": "Salom"}
+    {
+      "msg": "Salom"
+    }
   ]
 }
+\`\`\`
 
-Project Structure
+---
+
+## 📁 Project Structure
+
+\`\`\`
 .
 ├── api/                 # App with API logic
 ├── config/              # Django settings
-├── Dockerfile
-├── docker-compose.yml
-├── entrypoint.sh
-├── Makefile
-├── requirements.txt
-└── README.md
+├── Dockerfile           # Docker configuration
+├── docker-compose.yml   # Docker Compose setup
+├── entrypoint.sh        # Container entrypoint script
+├── Makefile             # Build automation
+├── requirements.txt     # Python dependencies
+└── README.md            # This file
+\`\`\`
+
+---
+
+## 📝 License
+
+Add your license information here.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
