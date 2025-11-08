@@ -96,10 +96,6 @@ docker compose down
 
 | Command | Description |
 |---------|-------------|
-| `make install` | Install dependencies |
-| `make migrate` | Run migrations |
-| `make collectstatic` | Collect static files |
-| `make run` | Migrate + collectstatic + run server |
 | `make up` | Docker compose up |
 | `make down` | Docker compose down |
 
