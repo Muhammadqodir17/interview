@@ -129,13 +129,9 @@ Retrieve the concatenated code and final result.
 {
   "part1": "3b6050ea-a3d4-4fc8",
   "part2": "-86f4-bec75ca0b0c5",
-  "part1_plus_part2": "3b6050ea-a3d4-4fc8-86f4-bec75ca0b0c5",
+  "part1 + part2": "3b6050ea-a3d4-4fc8-86f4-bec75ca0b0c5",
   "result": [
-    {
-      "msg": "Salom",
-      "status": "success",
-      "timestamp": "2024-11-08T15:30:00Z"
-    }
+    "{\"msg\":\"Salom\"}"
   ]
 }
 ```
