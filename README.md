@@ -199,13 +199,3 @@ Configure the following variables:
 - Database credentials
 
 ---
-
-## 📝 License
-
-Add your license information here.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to open an issue or submit a pull request.
