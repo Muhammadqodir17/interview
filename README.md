@@ -164,13 +164,6 @@ Retrieve the concatenated code and final result.
 }
 \`\`\`
 
-**Empty Request:**
-\`\`\`json
-{
-  "part2": ""
-}
-\`\`\`
-
 ---
 
 ## 📁 Project Structure
