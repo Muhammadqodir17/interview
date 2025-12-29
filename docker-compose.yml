@@ -20,7 +20,7 @@ services:
     depends_on:
       - postgres-db
     ports:
-      - ${SERVER_PORT:-8001}:8000
+      - ${SERVER_PORT:-8080}:8000
     volumes:
       - ./:/opt/app
       - ./static:/opt/app/static
